@@ -33,7 +33,7 @@ void Color(int couleurDuTexte, int couleurDeFond) // fonction d'affichage de cou
 }
 int main()
 { 
-    
+    /*
     #pragma region TestCase
     // TEST CASE ET ECRITURE 
 
@@ -45,9 +45,15 @@ int main()
         case1.afficherCase();
         std::cout << "test" << std::endl;
     #pragma endregion
-
+        */
     #pragma region TestPlateau
     // TEST PLATEAU ET ECRITURE
+        Plateau p(11,9);
+        //p.afficherPlateau();
+        //std::cout<<"\n" << p.getTCase(0, 0) << "\n" << std::endl;
+        p.setCase(10, 0, 3);
+        p.setCase(9, 0, 5);
+        p.afficherPlateau();
 
 
     #pragma endregion

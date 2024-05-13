@@ -5,8 +5,8 @@ class Case
 {
 private :
     bool t; //Pour savoir si la case est occupée ou non
-    int const x;   
-    int const y;   
+    int x;   
+    int y;   
     int couleur; // int entre 0 et 15 pour la couleur
 public :
     //Constructeurs

@@ -17,9 +17,11 @@ public:
     int getLargeur() const;
     int getHauteur() const;
     Case getCase(int x, int y); 
+    bool getTCase(int x, int y);
+
     //Setter
-    void setCase(int x, int y);
+    void setCase(int x, int y,int ncouleur);
     //Methodes
-    void AfficherPlateau();
+    void afficherPlateau();
 };
 

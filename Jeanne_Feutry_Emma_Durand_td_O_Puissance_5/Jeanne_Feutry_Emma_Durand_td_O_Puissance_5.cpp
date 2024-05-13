@@ -52,7 +52,7 @@ int main()
         //p.afficherPlateau();
         //std::cout<<"\n" << p.getTCase(0, 0) << "\n" << std::endl;
         p.setCase(10, 0, 3);
-        p.setCase(9, 0, 5);
+        p.setCase(9, 0, 3);
         p.afficherPlateau();
 
 

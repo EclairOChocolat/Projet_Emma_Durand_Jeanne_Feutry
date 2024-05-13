@@ -2,19 +2,60 @@
 //
 
 #include <iostream>
+#include <windows.h>
+#include <string>
+#include <vector>
+#include "Case.h"
+#include "Plateau.h"
 
-int main()
+void Color(int couleurDuTexte, int couleurDeFond) // fonction d'affichage de couleurs
 {
-    std::cout << "Hello World!\n";
+    HANDLE H = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(H, couleurDeFond * 16 + couleurDuTexte);
+    /*
+    0 : Noir 
+    1 : Bleu foncé 
+    2 : Vert foncé 
+    3 : Turquoise 
+    4 : Rouge foncé 
+    5 : Violet 
+    6 : Vert caca d'oie 
+    7 : Gris clair 
+    8 : Gris foncé 
+    9 : Bleu fluo 
+    10 : Vert fluo 
+    11 : Turquoise 
+    12 : Rouge fluo 
+    13 : Violet 2 
+    14 : Jaune 
+    15 : Blanc 
+    */
 }
+int main()
+{ 
+    
+    #pragma region TestCase
+    // TEST CASE ET ECRITURE 
 
-// Exécuter le programme : Ctrl+F5 ou menu Déboguer > Exécuter sans débogage
-// Déboguer le programme : F5 ou menu Déboguer > Démarrer le débogage
+        Case case1 (true, 10, 1, 13);
+        case1.afficherTest();
+        case1.afficherCase();  
+        std::cout <<"test" <<std::endl;
+        case1.setCouleur(2);
+        case1.afficherCase();
+        std::cout << "test" << std::endl;
+    #pragma endregion
 
-// Astuces pour bien démarrer : 
-//   1. Utilisez la fenêtre Explorateur de solutions pour ajouter des fichiers et les gérer.
-//   2. Utilisez la fenêtre Team Explorer pour vous connecter au contrôle de code source.
-//   3. Utilisez la fenêtre Sortie pour voir la sortie de la génération et d'autres messages.
-//   4. Utilisez la fenêtre Liste d'erreurs pour voir les erreurs.
-//   5. Accédez à Projet > Ajouter un nouvel élément pour créer des fichiers de code, ou à Projet > Ajouter un élément existant pour ajouter des fichiers de code existants au projet.
-//   6. Pour rouvrir ce projet plus tard, accédez à Fichier > Ouvrir > Projet et sélectionnez le fichier .sln.
+    #pragma region TestPlateau
+    // TEST PLATEAU ET ECRITURE
+
+
+    #pragma endregion
+
+
+    
+
+     
+
+
+}

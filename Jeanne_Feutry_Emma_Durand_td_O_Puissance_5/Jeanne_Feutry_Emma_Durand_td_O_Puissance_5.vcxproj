@@ -139,7 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Case.cpp" />
     <ClCompile Include="Jeanne_Feutry_Emma_Durand_td_O_Puissance_5.cpp" />
+    <ClCompile Include="Plateau.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Case.h" />
+    <ClInclude Include="Plateau.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

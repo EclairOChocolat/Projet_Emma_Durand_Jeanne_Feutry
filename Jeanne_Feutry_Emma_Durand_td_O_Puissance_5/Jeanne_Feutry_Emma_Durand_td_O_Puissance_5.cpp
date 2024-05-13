@@ -7,6 +7,9 @@
 #include <vector>
 #include "Case.h"
 #include "Plateau.h"
+#include "Joueur.h"
+#include "Humain.h"
+
 
 void Color(int couleurDuTexte, int couleurDeFond) // fonction d'affichage de couleurs
 {
@@ -46,16 +49,24 @@ int main()
         std::cout << "test" << std::endl;
     #pragma endregion
         */
+
+    /*
     #pragma region TestPlateau
     // TEST PLATEAU ET ECRITURE
         Plateau p(11,9);
         //p.afficherPlateau();
         //std::cout<<"\n" << p.getTCase(0, 0) << "\n" << std::endl;
         p.setCase(10, 0, 3);
-        p.setCase(9, 0, 3);
+        p.setCase(9, 0, 5);
         p.afficherPlateau();
 
 
+    #pragma endregion
+*/
+
+    #pragma region TestJoueurHumain
+            Humain h1(0);
+            h1.afficher();
     #pragma endregion
 
 

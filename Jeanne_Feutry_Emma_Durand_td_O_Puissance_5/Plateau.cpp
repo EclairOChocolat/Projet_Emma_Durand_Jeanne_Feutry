@@ -3,9 +3,11 @@
 #include <vector>
 #include "Case.h"
 
-
+//Constructeurs
 Plateau::Plateau() : 
-    largeur(9), hauteur(8) {
+    largeur(5), hauteur(5)
+{
+
     std::vector<std::vector<Case>> cases;
     for (int i = 0; i < this->hauteur; ++i) {
         std::vector<Case> ligne;

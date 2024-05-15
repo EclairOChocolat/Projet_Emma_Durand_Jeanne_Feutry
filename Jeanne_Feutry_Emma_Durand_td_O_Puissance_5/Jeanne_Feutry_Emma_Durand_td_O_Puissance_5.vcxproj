@@ -142,12 +142,14 @@
     <ClCompile Include="Case.cpp" />
     <ClCompile Include="Humain.cpp" />
     <ClCompile Include="Jeanne_Feutry_Emma_Durand_td_O_Puissance_5.cpp" />
+    <ClCompile Include="Jeu.cpp" />
     <ClCompile Include="Joueur.cpp" />
     <ClCompile Include="Plateau.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Case.h" />
     <ClInclude Include="Humain.h" />
+    <ClInclude Include="Jeu.h" />
     <ClInclude Include="Joueur.h" />
     <ClInclude Include="Plateau.h" />
   </ItemGroup>

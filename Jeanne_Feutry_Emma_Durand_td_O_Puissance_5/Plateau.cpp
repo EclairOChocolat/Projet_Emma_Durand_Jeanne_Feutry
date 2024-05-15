@@ -39,6 +39,7 @@ Plateau::Plateau(int l, int h, std::vector<std::vector<Case>> cases) :
 // Getter
 int Plateau::getLargeur() const { return largeur; }
 int Plateau::getHauteur() const { return hauteur; }
+int Plateau::getCouleurCase(int x, int y) const { return cases[y][x].getCouleur(); }
 Case Plateau::getCase(int x, int y) { return cases[y][x]; };
 bool Plateau::getTCase(int x, int y) {
     return cases[y][x].getT();

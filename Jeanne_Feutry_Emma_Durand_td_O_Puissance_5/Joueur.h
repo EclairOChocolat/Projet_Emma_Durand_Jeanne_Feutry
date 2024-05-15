@@ -5,17 +5,15 @@
 #include <vector>
 class Joueur
 {
-private :
-	std::vector<Case> jetons;
+
 protected :
 	int couleur;
 public :
-	Joueur(int couleur, std::vector<Case> jetons);
 	Joueur(int couleur);
+	Joueur();
 	int getCouleurJoueur() const;
 	void setCouleurJoueur(int couleur);
-	std::vector<Case>& getJetons();
-	void ajoutezJeton(Case j);
+	virtual void type() const;
 	virtual void afficher() const;
 };
 

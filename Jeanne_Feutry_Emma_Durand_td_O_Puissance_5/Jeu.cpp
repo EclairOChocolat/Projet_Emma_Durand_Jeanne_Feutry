@@ -2,10 +2,10 @@
 
 //Constructeurs
 Jeu::Jeu(Plateau _p, Humain _a, Humain _b)
-: p(&_p), a(_a), b(_b), ga(false), gb(false)
+: p(&_p), a(_a), b(_b)//, ga(false), gb(false)
 {}
 Jeu::Jeu( Humain _a, Humain _b)
-	: a(_a), b(_b), ga(false), gb(false)
+	: a(_a), b(_b)//, ga(false), gb(false)
 {
 	int l(0);
 	int h(0);
@@ -21,14 +21,77 @@ Jeu::Jeu( Humain _a, Humain _b)
 }
 
 //Methodes
-bool Jeu::testGagnant(std::vector<Case>& Joueur) {
-	
-	return true;
+bool Jeu::testGagnant(int couleur) {
+	bool t = false;
+	//teste ligne
+	for (int i = 0; i < this->p->getHauteur(); ++i) {
+		for (int j = 0; j <= this->p->getLargeur() - 5; ++j) {
+			if (this->p->getTCase(j,i) && this->p->getTCase(j+1, i) && this->p->getTCase(j + 2, i) && this->p->getTCase(j + 3, i) && this->p->getTCase(j + 4, i)) {
+				if (this->p->getCouleurCase(j, i) == couleur && this->p->getCouleurCase(j + 1, i) == couleur && this->p->getCouleurCase(j + 2, i) == couleur && this->p->getCouleurCase(j + 3, i) == couleur && this->p->getCouleurCase(j + 4, i) == couleur) {
+					t = true;
+				}
+			}
+		}
+	}
+	//test colonne
+	for (int j = 0; j < this->p->getLargeur(); ++j) {
+		for (int i = 0; i <= this->p->getHauteur() - 5; ++i) {
+			if (this->p->getTCase(j, i) && this->p->getTCase(j , i+ 1) && this->p->getTCase(j, i + 2) && this->p->getTCase(j , i+ 3) && this->p->getTCase(j , i+ 4)) {
+				
+				if (this->p->getCouleurCase(j, i) == couleur && this->p->getCouleurCase(j, i + 1) == couleur && this->p->getCouleurCase(j, i + 2) == couleur && this->p->getCouleurCase(j, i + 3) == couleur && this->p->getCouleurCase(j, i + 4) == couleur) {
+					t = true;
+				}
+			}
+		}
+	}
+	//test diagonale droite gauche
+	for (int i = 0; i <= this->p->getHauteur() - 5; ++i) {
+		for (int j = this->p->getLargeur() - 1; j >= 4; --j) {
+			if (this->p->getTCase(j, i) && this->p->getTCase(j-1, i + 1) && this->p->getTCase(j-2, i + 2) && this->p->getTCase(j-3, i + 3) && this->p->getTCase(j-4, i + 4)) {
+
+				if (this->p->getCouleurCase(j, i) == couleur && this->p->getCouleurCase(j-1, i + 1) == couleur && this->p->getCouleurCase(j-2, i + 2) == couleur && this->p->getCouleurCase(j-3, i + 3) == couleur && this->p->getCouleurCase(j-4, i + 4) == couleur) {
+					t = true;
+				}
+			}
+		}
+	}
+	//test diagonale gauche droite 
+	for (int i = 0; i <= this->p->getHauteur() - 5; ++i) {
+		for (int j = 0; j <= this->p->getLargeur() - 5; ++j) {
+			if (this->p->getTCase(j, i) && this->p->getTCase(j + 1, i + 1) && this->p->getTCase(j + 2, i + 2) && this->p->getTCase(j + 3, i + 3) && this->p->getTCase(j + 4, i + 4)) {
+
+				if (this->p->getCouleurCase(j, i) == couleur && this->p->getCouleurCase(j + 1, i + 1) == couleur && this->p->getCouleurCase(j + 2, i + 2) == couleur && this->p->getCouleurCase(j + 3, i + 3) == couleur && this->p->getCouleurCase(j + 4, i + 4) == couleur) {
+					t = true;
+				}
+			}
+		}
+	}
+
+	return t;
 }
-bool Jeu::testPlateau(int c) {
+/// <summary>
+/// teste si on peut jouer dans le plateau
+/// </summary>
+/// <returns>retourne true si il n'y plus de case et false si il reste de la place</returns>
+bool Jeu::testPlateau() {
+	bool t = true;
+	for (int i = 0; i < this->p->getLargeur();i++) {
+		if (!testColonne(i)) {
+			t = false;
+			i = this->p->getLargeur();
+		}
+	}
+	return t;
+}
+/// <summary>
+/// Teste si il est possible de jouer dans cette colonne
+/// </summary>
+/// <param name="c">numéro de la colonne</param>
+/// <returns>true si on ne peut pas jouer</returns>
+bool Jeu::testColonne(int c) {
 	bool t = false;
 		
-	//Test si la colonne choisie est bient dans le plateau
+	//Test si la colonne choisie est bien dans le plateau
 	if (c >= this->p->getLargeur()||c<0) {
 		t = true;
 	}
@@ -53,45 +116,52 @@ int Jeu::cherchePlacementJeton(int& x) {
 	}
 	return y;
 }
-void Jeu::mancheA() {
+bool Jeu::mancheA(const Joueur& joueurA) {
 
 	this->p->afficherPlateau();
 	int x(0);
 	int y(0);
+	std::cout << "Joueur : ";
+	joueurA.type();
 	do {
 	std::cout << "Choisir la colonne ou vous voulez jouer : ";
 	std::cin >> x;
 	x = x - 1;
-	} while (testPlateau(x));
+	} while (testColonne(x));
 
 	y = cherchePlacementJeton(x);
 	this->p->setCase(x, y, this->a.getCouleurJoueur());
-
-	a.ajoutezJeton(this->p->getCase(x,y));
-	this->ga = testGagnant(this->a.getJetons());
+	return testGagnant(a.getCouleurJoueur());
+	//a.ajoutezJeton(this->p->getCase(x,y));
+	
 }
-void Jeu::mancheB() {
+bool Jeu::mancheB(const Joueur& joueurB) {
 	this->p->afficherPlateau();
 	int x(0);
 	int y(0);
+	std::cout << "Joueur : ";
+	joueurB.type();
 	do {
 		std::cout << "Choisir la colonne ou vous voulez jouer : ";
 		std::cin >> x;
 		x = x - 1;
-	} while (testPlateau(x));
+	} while (testColonne(x));
 
 	y = cherchePlacementJeton(x);
 	this->p->setCase(x, y, this->b.getCouleurJoueur());
-
-	b.ajoutezJeton(this->p->getCase(x, y));
-	//this->gb = testGagnant(this->b.getJetons());
+	return testGagnant(b.getCouleurJoueur());
+	
 }
-
 void Jeu::affichageFinPartie() {
 	this->p->afficherPlateau();
 	std::cout << "--- FIN DE LA PARTIE ---" << std::endl;
-	std::cout << "Bravo ! ";
-	ga ? a.afficher() : b.afficher(); // si ga = true alors on affiche a gagnant, b sinon
-
+	std::cout << "Egalite ! ";
 }
+void Jeu::affichageFinPartie(const Joueur& joueur) {
+	this->p->afficherPlateau();
+	std::cout << "--- FIN DE LA PARTIE ---" << std::endl;
+	std::cout << " Bravo le joueur ";
+	joueur.afficher();
+}
+
 

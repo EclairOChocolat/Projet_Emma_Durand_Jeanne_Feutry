@@ -16,6 +16,7 @@ public:
     //Getter
     int getLargeur() const;
     int getHauteur() const;
+    int getCouleurCase(int x, int y)const;
     Case getCase(int x, int y); 
     bool getTCase(int x, int y);
 

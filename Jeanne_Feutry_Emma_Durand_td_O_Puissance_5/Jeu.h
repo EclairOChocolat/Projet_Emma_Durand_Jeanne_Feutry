@@ -13,8 +13,6 @@ private:
 	Plateau* p;
 	Joueur a;
 	Joueur b;
-	bool ga;//Si A a gagné ga = true sinon false
-	bool gb;//Si B a gagné gb = true sinon false
 public:
 	//Constructeurs
 	Jeu(Plateau p,Humain a, Humain b);
@@ -22,12 +20,15 @@ public:
 	//Getteurs
 	
 	//Methodes
-	static bool testGagnant(std::vector<Case>& Joueur);
-	bool testPlateau(int c);
+	
+	bool testGagnant(int couleur);
+	bool testPlateau();
+	bool testColonne(int c);
 	int cherchePlacementJeton(int& x);
-	void mancheA();
-	void mancheB();
+	bool mancheA(const Joueur& joueurA);
+	bool mancheB(const Joueur& joueurB);
 	void affichageFinPartie();
+	void affichageFinPartie(const Joueur& joueur);
 
 };
 

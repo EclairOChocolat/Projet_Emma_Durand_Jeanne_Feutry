@@ -9,6 +9,7 @@
 #include "Plateau.h"
 #include "Joueur.h"
 #include "Humain.h"
+#include "Jeu.h"
 
 
 void Color(int couleurDuTexte, int couleurDeFond) // fonction d'affichage de couleurs
@@ -64,10 +65,37 @@ int main()
     #pragma endregion
 */
 
+    
     #pragma region TestJoueurHumain
-            Humain h1(0);
-            h1.afficher();
+/*
+    std::cout << "Joueur 1:" << std::endl;
+            Humain a(0);
+            a.afficher();
+    std::cout << "\nJoueur 2:" << std::endl;
+    Humain b(0);
+    int bcouleur= b.getCouleurJoueur();
+    while(a.getCouleurJoueur() == b.getCouleurJoueur()){
+        std::cout << "La couleur doit-etre differente que l'autre joueur. Reessayez : ";
+        std::cin >> bcouleur;
+        // Vérifiez si la couleur est dans la plage valide
+        while (bcouleur < 1 || bcouleur> 14) {
+            std::cout << "La couleur doit etre entre 1 et 14. Reessayez : ";
+            std::cin >> bcouleur;
+        }
+        b.setCouleurJoueur(bcouleur);
+    }
+    b.afficher();*/
     #pragma endregion
+    Humain a(1,"Emma");
+    Humain b(2, "Jeanne");
+    #pragma region Test Jeu
+    
+    Jeu jeu(a,b);
+    jeu.mancheA();
+    jeu.mancheB();/**/
+    jeu.affichageFinPartie();
+    #pragma endregion
+
 
 
     

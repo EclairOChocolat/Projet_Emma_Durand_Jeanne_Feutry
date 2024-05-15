@@ -1,2 +1,7 @@
 ﻿  Humain.cpp
-  Jeanne_Feutry_Emma_Durand_td_O_Puissance_5.vcxproj -> C:\Users\Edurn\source\repos\C_Cplusplus\Jeanne_Feutry_Emma_Durand_td_O_Puissance_5\Debug\Jeanne_Feutry_Emma_Durand_td_O_Puissance_5.exe
+  Jeanne_Feutry_Emma_Durand_td_O_Puissance_5.cpp
+  Jeu.cpp
+C:\Users\Edurn\source\repos\C_Cplusplus\Jeanne_Feutry_Emma_Durand_td_O_Puissance_5\Jeu.cpp(94,9): error C2039: 'getNom' n'est pas membre de 'Joueur'
+C:\Users\Edurn\source\repos\C_Cplusplus\Jeanne_Feutry_Emma_Durand_td_O_Puissance_5\Joueur.h(6): message : voir la déclaration de 'Joueur'
+  Joueur.cpp
+  Génération de code en cours...

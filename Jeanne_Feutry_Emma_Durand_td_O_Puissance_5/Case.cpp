@@ -5,11 +5,11 @@
 Case::Case() 
 : t(false), x(0), y(0), couleur(0)
 {}
-Case::Case(int const x_, int const y_)
+Case::Case(int const y_, int const x_)
 	: t(false), x(x_), y(y_), couleur(0)
 {}
 
-Case::Case(bool t_, int const x_, int y_, int couleur_)
+Case::Case(bool t_, int const y_, int x_, int couleur_)
 	: t(t_), x(x_), y(y_), couleur(couleur_)
 {
 	if (couleur_ < 0 || couleur_ > 15) {

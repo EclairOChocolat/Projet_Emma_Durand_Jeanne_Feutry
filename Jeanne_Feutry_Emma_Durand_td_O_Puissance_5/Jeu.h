@@ -23,7 +23,10 @@ public:
 	
 	//Methodes
 	static bool testGagnant(std::vector<Case>& Joueur);
-	void manche();
+	bool testPlateau(int c);
+	int cherchePlacementJeton(int& x);
+	void mancheA();
+	void mancheB();
 	void affichageFinPartie();
 
 };

@@ -12,11 +12,15 @@ Joueur::Joueur(int c)
 // Getter
 int Joueur::getCouleurJoueur() const { return couleur ; }
 std::vector<Case>& Joueur::getJetons() { return jetons; }
+//Setter
+void Joueur::setCouleurJoueur(int couleur) {
+	this->couleur = couleur;
+}
 
 //Methodes
 void Joueur::ajoutezJeton(Case j) {
 	this->jetons.push_back(j);
 };
 void Joueur::afficher() const {
-	std::cout << "Couleur: " << couleur << std::endl;
+	std::cout << " a gagne !" << couleur << std::endl;
 }

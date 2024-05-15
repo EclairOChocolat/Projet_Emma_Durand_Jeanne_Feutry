@@ -11,8 +11,8 @@ private :
 public :
     //Constructeurs
     Case();
-    Case(int const x, int const y);
-    Case(bool t, int const x, int const y, int couleur);
+    Case(int const y, int const x);
+    Case(bool t, int const y, int const x, int couleur);
     
 
     // Getter

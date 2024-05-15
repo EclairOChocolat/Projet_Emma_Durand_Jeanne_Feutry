@@ -21,14 +21,77 @@ Jeu::Jeu( Humain _a, Humain _b)
 }
 
 //Methodes
-void Jeu::testGagnant() {
-	this->ga = this->a.testVictoire();
-	this->gb = this->b.testVictoire();
+bool Jeu::testGagnant(std::vector<Case>& Joueur) {
+	
+	return true;
 }
-void Jeu::manche() {
+bool Jeu::testPlateau(int c) {
+	bool t = false;
+		
+	//Test si la colonne choisie est bient dans le plateau
+	if (c >= this->p->getLargeur()||c<0) {
+		t = true;
+	}
+	else {
+		
+		//Test si un jeton le plus haut de la colonne est deja posé
+		if (this->p->getTCase(c, 0)) {
+				t = true;
+			}
+	}
+	return t;
+}
+/// <summary>
+///Cherche dans le plateau le jeton le plus bas possible
+/// </summary>
+/// <param name="c">Colonne</param>
+/// <returns>retourne la hauteur ou le jeton a ete placé</returns>
+int Jeu::cherchePlacementJeton(int& x) {
+	int y(this->p->getHauteur() - 1);
+	while (this->p->getTCase(x, y)||y==0) {
+		y--;
+	}
+	return y;
+}
+void Jeu::mancheA() {
 
+	this->p->afficherPlateau();
+	int x(0);
+	int y(0);
+	do {
+	std::cout << "Choisir la colonne ou vous voulez jouer : ";
+	std::cin >> x;
+	x = x - 1;
+	} while (testPlateau(x));
+
+	y = cherchePlacementJeton(x);
+	this->p->setCase(x, y, this->a.getCouleurJoueur());
+
+	a.ajoutezJeton(this->p->getCase(x,y));
+	this->ga = testGagnant(this->a.getJetons());
 }
+void Jeu::mancheB() {
+	this->p->afficherPlateau();
+	int x(0);
+	int y(0);
+	do {
+		std::cout << "Choisir la colonne ou vous voulez jouer : ";
+		std::cin >> x;
+		x = x - 1;
+	} while (testPlateau(x));
+
+	y = cherchePlacementJeton(x);
+	this->p->setCase(x, y, this->b.getCouleurJoueur());
+
+	b.ajoutezJeton(this->p->getCase(x, y));
+	//this->gb = testGagnant(this->b.getJetons());
+}
+
 void Jeu::affichageFinPartie() {
+	this->p->afficherPlateau();
+	std::cout << "--- FIN DE LA PARTIE ---" << std::endl;
+	std::cout << "Bravo ! ";
+	ga ? a.afficher() : b.afficher(); // si ga = true alors on affiche a gagnant, b sinon
 
 }
 

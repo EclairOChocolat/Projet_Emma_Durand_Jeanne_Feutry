@@ -41,14 +41,14 @@ int Plateau::getLargeur() const { return largeur; }
 int Plateau::getHauteur() const { return hauteur; }
 Case Plateau::getCase(int x, int y) { return cases[y][x]; };
 bool Plateau::getTCase(int x, int y) {
-    return cases[x][y].getT();
+    return cases[y][x].getT();
 };
 
 //Setter
 void Plateau::setCase(int x, int y,int ncouleur) {
-    if (!cases[x][y].getT()) {
-        cases[x][y].setT(true);
-        cases[x][y].setCouleur(ncouleur);
+    if (!cases[y][x].getT()) {
+        cases[y][x].setT(true);
+        cases[y][x].setCouleur(ncouleur);
     }
 };
 

@@ -39,8 +39,20 @@ Plateau::Plateau(int l, int h, std::vector<std::vector<Case>> cases) :
 // Getter
 int Plateau::getLargeur() const { return largeur; }
 int Plateau::getHauteur() const { return hauteur; }
+/// <summary>
+/// retourne la couleur de la case
+/// </summary>
+/// <param name="x">abscisse</param>
+/// <param name="y">ordonné</param>
+/// <returns>La couleur de la case</returns>
 int Plateau::getCouleurCase(int x, int y) const { return cases[y][x].getCouleur(); }
 Case Plateau::getCase(int x, int y) { return cases[y][x]; };
+/// <summary>
+/// retourne l'état de la case
+/// </summary>
+/// <param name="x">abscisse</param>
+/// <param name="y">ordonnée</param>
+/// <returns>si la case est prise : true , sinon false</returns>
 bool Plateau::getTCase(int x, int y) {
     return cases[y][x].getT();
 };
@@ -54,6 +66,10 @@ void Plateau::setCase(int x, int y,int ncouleur) {
 };
 
 //Methodes
+
+/// <summary>
+/// Affiche le plateau grâce a la methode afficheCase()
+/// </summary>
 void Plateau::afficherPlateau() {
 
     for (int i = 0; i < this->hauteur; ++i) {

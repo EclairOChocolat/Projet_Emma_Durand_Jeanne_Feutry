@@ -27,9 +27,17 @@ void Joueur::setCouleurJoueur(int couleur) {
 }
 
 //Methodes
+
+/// <summary>
+/// Affiche la victoire du joueur
+/// </summary>
 void Joueur::afficher() const {
 	std::cout << " a gagne !" << std::endl;
 }
+
+/// <summary>
+/// Methode virtuel pour afficher le type du Joueur (son prenom pour Humain ou IA pour Ia)
+/// </summary>
 void Joueur::type() const {
 	std::cout << "";
 }

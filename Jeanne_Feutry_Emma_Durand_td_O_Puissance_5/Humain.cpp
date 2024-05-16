@@ -21,15 +21,25 @@ Humain::Humain(int c)
 	std::cout << "Entrez votre nom : ";
 	std::cin >> this->nom;
 }
-;
+
+
+/// <summary>
+/// Affiche le nom du joueur + sa victoire
+/// </summary>
 void Humain::afficher() const {
 	std::cout <<nom ;
 	Joueur::afficher();
 }
-
+/// <summary>
+/// Affiche le prenom du joueur
+/// </summary>
 void Humain::type() const {
 	std::cout << nom<< std::endl;
 }
+
+/// <summary>
+/// méthode qui demande à l'utilisateur de rentrer sa couleur de pion
+/// </summary>
 void Humain::initialisationCouleur() {
 	std::cout << "\n1 : Bleu fonce\t2 : Vert fonce\n3 : Turquoise\t4 : Rouge fonce ";
 	std::cout << "\n5 : Violet\t6 : Vert caca d'oie \n7 : Gris clair\t8 : Gris fonce \n9 : Bleu fluo\t10 : Vert fluo";
@@ -42,6 +52,8 @@ void Humain::initialisationCouleur() {
 		std::cin >> this->couleur;
 	}
 }
+
+//Getter
 std::string Humain::getNom() {
 	return nom;
 }

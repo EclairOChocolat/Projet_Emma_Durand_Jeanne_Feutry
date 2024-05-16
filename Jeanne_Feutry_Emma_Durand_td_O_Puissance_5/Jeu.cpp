@@ -1,6 +1,7 @@
 #include "Jeu.h"
 
 //Constructeurs
+
 Jeu::Jeu(Plateau _p, Humain _a, Humain _b)
 : p(&_p), a(_a), b(_b)
 {}
@@ -116,6 +117,16 @@ int Jeu::cherchePlacementJeton(int& x) {
 	}
 	return y;
 }
+/// <summary>
+/// Déroulement d'une manche du joueur A:
+/// affiche le plateau
+/// demande au joueur de rentrer sa colonne et verifie si c'est possible de jouer dans celle rentrée
+/// cherche l'emplacment du jeton dans la colonne choisie
+/// Place le jeton dans la bonne case
+/// Verifie si celui si à gagner
+/// </summary>
+/// <param name="joueurA"> Afin de pouvoir bien afficher le prenom du joueur</param>
+/// <returns>Return true si le joueur A à gagner après sa manche et false sino</returns>
 bool Jeu::mancheA(const Joueur& joueurA) {
 
 	this->p->afficherPlateau();
@@ -134,6 +145,16 @@ bool Jeu::mancheA(const Joueur& joueurA) {
 	return testGagnant(a.getCouleurJoueur());
 	
 }
+/// <summary>
+/// Déroulement d'une manche du joueur B:
+/// affiche le plateau
+/// demande au joueur de rentrer sa colonne et verifie si c'est possible de jouer dans celle rentrée
+/// cherche l'emplacment du jeton dans la colonne choisie
+/// Place le jeton dans la bonne case
+/// Verifie si celui si à gagner
+/// </summary>
+/// <param name="joueurA"> Afin de pouvoir bien afficher le prenom du joueur</param>
+/// <returns>Return true si le joueur A à gagner après sa manche et false sino</returns>
 bool Jeu::mancheB(const Joueur& joueurB) {
 	this->p->afficherPlateau();
 	int x(0);
@@ -151,11 +172,18 @@ bool Jeu::mancheB(const Joueur& joueurB) {
 	return testGagnant(b.getCouleurJoueur());
 	
 }
+/// <summary>
+/// Fonction surchargée, affiche la fin de partie en cas d'égalité
+/// </summary>
 void Jeu::affichageFinPartie() {
 	this->p->afficherPlateau();
 	std::cout << "--- FIN DE LA PARTIE ---" << std::endl;
 	std::cout << "Egalite ! ";
 }
+/// <summary>
+/// Fonction surchargée, affiche la victoire du joueur en parametre
+/// </summary>
+/// <param name="joueur">Joueur victorieux</param>
 void Jeu::affichageFinPartie(const Joueur& joueur) {
 	this->p->afficherPlateau();
 	std::cout << "--- FIN DE LA PARTIE ---" << std::endl;

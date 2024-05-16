@@ -2,10 +2,10 @@
 
 //Constructeurs
 Jeu::Jeu(Plateau _p, Humain _a, Humain _b)
-: p(&_p), a(_a), b(_b)//, ga(false), gb(false)
+: p(&_p), a(_a), b(_b)
 {}
 Jeu::Jeu( Humain _a, Humain _b)
-	: a(_a), b(_b)//, ga(false), gb(false)
+	: a(_a), b(_b)
 {
 	int l(0);
 	int h(0);
@@ -132,7 +132,6 @@ bool Jeu::mancheA(const Joueur& joueurA) {
 	y = cherchePlacementJeton(x);
 	this->p->setCase(x, y, this->a.getCouleurJoueur());
 	return testGagnant(a.getCouleurJoueur());
-	//a.ajoutezJeton(this->p->getCase(x,y));
 	
 }
 bool Jeu::mancheB(const Joueur& joueurB) {

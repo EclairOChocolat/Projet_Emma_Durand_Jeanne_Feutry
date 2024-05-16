@@ -22,11 +22,11 @@ int main()
             std::cout << "Joueur 1:" << std::endl;
             
             Humain a(0);
-            a.initialisationNom();
+            a.initialisationCouleur();
 
             std::cout << "\nJoueur 2:" << std::endl;
             Humain b(0);
-            b.initialisationNom();
+            b.initialisationCouleur();
             int bcouleur = b.getCouleurJoueur();
             while (a.getCouleurJoueur() == b.getCouleurJoueur()) {
                 std::cout << "La couleur doit-etre differente que l'autre joueur. Reessayez : ";

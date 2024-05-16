@@ -11,7 +11,7 @@ public:
 	Humain(int couleur, std::string nom);
 	Humain();
 	Humain(int couleur);
-	void initialisationNom();
+	void initialisationCouleur();
 	std::string getNom();
 	virtual void afficher() const override;
 	virtual void type() const override;
